@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Dosis', sans-serif;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 40px;
+    font-weight: 600;
+}
+
+p {
+    font-size: large;
+    font-weight: 500;
+}
+
+body {
+    background-color: black;
+    background-image: linear-gradient(to left top, #382d3f, #30283a, #282334, #201e2f, #181929, #181828, #171728, #171627, #1e182b, #261a2e, #2e1c30, #361e32);
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px 10px;
+    width: 90%;
+    max-width: 600px;
+}
+
+header {
+    text-align: center;
+    opacity: 0;
+}
+
+header img {
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.05);
+}
+
+.fotoPerfil {
+    width: 100px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+#enlaces {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-top: 30px;
+}
+
+.link {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    padding: 10px 40px;
+    border-radius: 3px;
+    transition: all 200ms ease;
+    opacity: 0;
+}
+
+.link:hover, .link:active {
+    background-color: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 5px 10px rgba(0, 0, 0, 0.3);
+    transition: all 200ms ease;
+}
+
+/* Animaciones */
+
+@keyframes flip {
+    0% {
+       transform: perspective(400px) rotateX(90deg); 
+       opacity: 0;
+    }
+    40% {
+       transform: perspective(400px) rotateX(-10deg);
+    }
+    70% {
+       transform: perspective(400px) rotateX(10deg);
+    }
+    100% {
+       transform: perspective(400px) rotateX(0deg);
+       opacity: 1;
+    }
+}
+ 
+.flip {
+    animation-name: flip;
+    animation-duration: 1000ms;
+    animation-fill-mode: forwards;
+}
+
+@keyframes aparecer {
+    0% {
+        opacity: 0;
+        scale: 0.9;
+    }
+    100% {
+        opacity: 1;
+        scale: 1;
+    }
+
+}
+
+.aparecer {
+    animation-name: aparecer;
+    animation-duration: 1000ms;
+    animation-fill-mode: forwards;
+}
+
+.delay500 {
+    animation-delay: 500ms;
+}
+
+.delay1000 {
+    animation-delay: 1000ms;
+}
+
+/* Animación título */  
+
+@keyframes stack {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%);
+        text-shadow: -2px 3px 0 red, 2px -3px 0 blue;
+    };
+    60% {
+        opacity: 0.5;
+        transform: translateX(50%);
+    }
+    80% {
+        transform: none;
+        opacity: 1;
+        text-shadow: 2px -3px 0 red, -2px 3px 0 blue;
+    }
+    100% {
+        text-shadow: none;
+    }
+}
+  
+@keyframes glitch {
+    0% {
+        text-shadow: -2px 3px 0 red, 2px -3px 0 blue;
+        transform: translate(var(--glitch-translate));
+    }
+    2% {
+        text-shadow: 2px -3px 0 red, -2px 3px 0 blue;
+    }
+    4%, 100% {  
+        text-shadow: none; 
+        transform: none; 
+    }
+}
+
+.stack {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+  
+.stack h1 {
+    grid-row-start: 1;
+    grid-column-start: 1;
+    --stack-height: calc(100% / var(--stacks) - 1px);
+    --inverse-index: calc(calc(var(--stacks) - 1) - var(--index));
+    --clip-top: calc(var(--stack-height) * var(--index));
+    --clip-bottom: calc(var(--stack-height) * var(--inverse-index));
+    clip-path: inset(var(--clip-top) 0 var(--clip-bottom) 0);
+    animation: stack 340ms cubic-bezier(.46,.29,0,1.24) 1 backwards calc(var(--index) * 120ms), glitch 2s ease infinite 2s alternate-reverse;
+}
+  
+.stack h1:nth-child(odd) { 
+    --glitch-translate: 8px; 
+}
+
+.stack h1:nth-child(even) { 
+    --glitch-translate: -8px; 
+}
+  
+/* Contador */
+footer {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+}
+
+#contador {
+    color: #5a4a5e;
+}
