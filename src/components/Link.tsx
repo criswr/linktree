@@ -1,5 +1,5 @@
 import { Ilink } from "data/links"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 
 interface ILinkProps {
     readonly index: number
@@ -7,7 +7,6 @@ interface ILinkProps {
 }
 
 const Link = ({ index, link }: ILinkProps) => {
-  const linkRef= useRef(null)
   const [show, setShow] = useState(false);
 
   useEffect(
@@ -22,7 +21,7 @@ const Link = ({ index, link }: ILinkProps) => {
 
   return (
     <a href={link.url} target="_blank" className="w-full flex justify-center">
-      <div ref={linkRef} className={`${show ? "flip" : ""} w-full bg-black/40 rounded px-10 py-2 max-w-[700px] opacity-0`}>{link.label}</div>
+      <div className={`${show ? "flip" : ""} w-full bg-black/40 rounded px-10 py-2 max-w-[700px] opacity-0`}>{link.label}</div>
     </a>
   )
 }
