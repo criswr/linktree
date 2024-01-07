@@ -21,8 +21,8 @@ const Link = ({ index, link }: ILinkProps) => {
   );
 
   return (
-    <a href={link.url} target="_blank" className="w-full">
-      <div ref={linkRef} className={`${show ? "flip" : ""} bg-black/40 rounded px-10 py-2 max-w-[700px] opacity-0`}>{link.label}</div>
+    <a href={link.url} target="_blank" className="w-full flex justify-center">
+      <div ref={linkRef} className={`${show ? "flip" : ""} w-full bg-black/40 rounded px-10 py-2 max-w-[700px] opacity-0`}>{link.label}</div>
     </a>
   )
 }
